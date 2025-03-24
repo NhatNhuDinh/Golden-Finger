@@ -43,53 +43,6 @@
                 <div class="loader"></div>
             </div>
 
-            <!-- Header -->
-            <header class="gi-header">
-                <div class="container-fluid">
-                    <div class="gi-header-items">
-                        <div class="left-header">
-
-                            <div class="header-search-box">
-                                <div class="header-search-drop">
-                                    <a href="javascript:void(0)" class="open-search"><i class="ri-search-line"></i></a>
-                                    <form class="gi-search">
-                                        <input class="search-input" type="text" placeholder="Search...">
-                                        <a href="javascript:void(0)" class="search-btn"><i class="ri-search-line"></i>
-                                        </a>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right-header">
-
-
-
-
-                            <div class="gi-right-tool gi-user-drop">
-                                <div class="gi-hover-drop">
-                                    <div class="gi-hover-tool">
-                                        <img class="user" src="dashboard/assets/img/user/1.jpg" alt="user">
-                                    </div>
-                                    <div class="gi-hover-drop-panel right">
-
-                                        <ul class="">
-                                            <li><a href="team-profile.html">Profile</a></li>
-                                            <li><a href="faq.html">Help</a></li>
-                                            <li><a href="chatapp.html">Messages</a></li>
-                                            <li><a href="project-overview.html">Projects</a></li>
-                                            <li><a href="team-update.html">Settings</a></li>
-                                        </ul>
-                                        <ul class="border-top">
-                                            <li><a href="signin.html"><i class="ri-logout-circle-r-line"></i>Logout</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
            <!-- sidebar -->
             <div class="gi-sidebar-overlay"></div>
             <div class="gi-sidebar" data-mode="dark">
