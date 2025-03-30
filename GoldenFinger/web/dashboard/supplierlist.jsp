@@ -188,10 +188,10 @@
                                                             <c:forEach items="${suppliers}" var="supplier">
                                                                 <tr>
                                                                     <td>${supplier.id}</td>
-                                                                    <td>
+<!--                                                                    <td>
                                                                         <img class="cat-thumb" src="${supplier.image}" alt="Supplier Image" 
                                                                              onerror="this.src='dashboard/assets/img/supplier/default.png'">
-                                                                    </td>
+                                                                    </td>-->
                                                                     <td>${supplier.companyName}</td>
                                                                     <td>${supplier.contactName}</td>
                                                                     <td>${supplier.country}</td>

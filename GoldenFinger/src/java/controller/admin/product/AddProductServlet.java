@@ -2,7 +2,6 @@ package controller.admin.product;
 
 import dal.ProductDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,10 +13,7 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.util.Collection;
 
-/**
- *
- * @author nhudi
- */
+
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024 * 2, // 2MB
         maxFileSize = 1024 * 1024 * 10, // 10MB
@@ -36,10 +32,9 @@ public class AddProductServlet extends HttpServlet {
         request.getRequestDispatcher("dashboard/addproduct.jsp").forward(request, response);
     }
 
-  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {            
+            throws ServletException, IOException {
         ProductDAO pd = new ProductDAO();
         String name = request.getParameter("name");
         String quantity = request.getParameter("quantity");
@@ -56,17 +51,16 @@ public class AddProductServlet extends HttpServlet {
         String detail = request.getParameter("detail");
         String str = getStringImages(pd, request);
         pd.addProduct(name, pirce, quantity,
-                "0", str, include, 
-                warranty, demension, speaker, 
+                "0", str, include,
+                warranty, demension, speaker,
                 "5", weight, detail,
-                date, discount, "1", 
+                date, discount, "1",
                 category, supplier);
         response.sendRedirect("admin");
-       
+
     }
-    
-    
-    private String getStringImages(ProductDAO pd, HttpServletRequest request) throws IOException, ServletException{
+
+    private String getStringImages(ProductDAO pd, HttpServletRequest request) throws IOException, ServletException {
         String rootPath = new File(getServletContext().getRealPath("")).getParentFile().getParent();
         String uploadPath = rootPath + File.separator + "web" + File.separator + "assets" + File.separator + "img" + File.separator + "product-images";
         // Tạo thư mục nếu chưa có
@@ -82,23 +76,19 @@ public class AddProductServlet extends HttpServlet {
                 String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
 
                 // Tạo tên file mới để tránh trùng
-                String newFileName = pd.getHighestProductId() + 1 + "_" + i  + ".jpg";
+                String newFileName = pd.getHighestProductId() + 1 + "_" + i + ".jpg";
                 strImages += "assets/img/product-images/" + newFileName;
-                if (i < fileParts.size()){
-                   strImages += ",";
+                if (i < fileParts.size()) {
+                    strImages += ",";
                 }
                 ++i;
                 // Lưu file vào thư mục
                 String filePath = uploadPath + File.separator + newFileName;
-                part.write(filePath);              
+                part.write(filePath);
             }
         }
         return strImages;
     }
-    
-    
- 
-    
 
     /**
      * Returns a short description of the servlet.

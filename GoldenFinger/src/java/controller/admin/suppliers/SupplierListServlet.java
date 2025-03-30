@@ -63,7 +63,7 @@ public class SupplierListServlet extends HttpServlet {
                 boolean success = supplierDAO.addSupplier(newSupplier);
 
                 if (success) {
-                    LOGGER.info("Supplier added successfully: " + companyName);
+                    LOGGER.log(Level.INFO, "Supplier added successfully: {0}", companyName);
                 } else {
                     LOGGER.warning("Failed to add supplier: " + companyName);
                 }
@@ -90,9 +90,9 @@ public class SupplierListServlet extends HttpServlet {
                 boolean success = supplierDAO.updateSupplier(supplier);
 
                 if (success) {
-                    LOGGER.info("Supplier updated successfully: " + companyName);
+                    LOGGER.log(Level.INFO, "Supplier updated successfully: {0}", companyName);
                 } else {
-                    LOGGER.warning("Failed to update supplier: " + companyName);
+                    LOGGER.log(Level.WARNING, "Failed to update supplier: {0}", companyName);
                 }
             } else if ("delete".equals(action)) {
                 // Xử lý xóa nhà cung cấp
@@ -100,10 +100,10 @@ public class SupplierListServlet extends HttpServlet {
                 boolean success = supplierDAO.deleteSupplier(supplierId);
 
                 if (success) {
-                    LOGGER.info("Supplier deleted successfully: ID " + supplierId);
+                    LOGGER.log(Level.INFO, "Supplier deleted successfully: ID {0}", supplierId);
                     // Không trả về nội dung nếu thành công
                 } else {
-                    LOGGER.warning("Failed to delete supplier: ID " + supplierId);
+                    LOGGER.log(Level.WARNING, "Failed to delete supplier: ID {0}", supplierId);
                     response.getWriter().write("Cannot delete this supplier because it is used by products");
                 }
 
@@ -114,7 +114,7 @@ public class SupplierListServlet extends HttpServlet {
             // Chuyển hướng về trang danh sách nhà cung cấp
             response.sendRedirect("supplierlist");
         } catch (IOException | NumberFormatException e) {
-            LOGGER.log(Level.SEVERE, "Error processing supplier action: " + action, e);
+            LOGGER.log(Level.SEVERE, "Error processing supplier action:", e);
             response.sendRedirect("supplierlist");
         }
     }
